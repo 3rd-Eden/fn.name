@@ -38,4 +38,8 @@ describe('fn.name', function () {
   it('works with anonymous', function () {
     assume(name(function () {})).equals('anonymous');
   });
+
+  it('returns the className if we were not given a function', function () {
+    assume(name('string')).equals('String');
+  });
 });

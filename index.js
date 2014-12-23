@@ -3,17 +3,6 @@
 var toString = Object.prototype.toString;
 
 /**
- * Get class information for a given type.
- *
- * @param {Mixed} of Type to check.
- * @returns {String} The name of the type.
- * @api private
- */
-function type(of) {
-  return toString.call(of).slice(8, -1).toLowerCase();
-}
-
-/**
  * Extract names from functions.
  *
  * @param {Function} fn The function who's name we need to extract.
@@ -40,12 +29,13 @@ module.exports = function name(fn) {
   // toString the given function and attempt to parse it out of it, or determine
   // the class.
   //
-  var named = fn.toString();
+  var named = fn.toString()
+    , type = toString.call(fn).slice(8, -1);
 
-  if ('function' === type(fn)) {
+  if ('Function' === type) {
     named = named.substring(named.indexOf('(') + 1, named.indexOf(')'));
   } else {
-    named = toString.call(fn).slice(8, -1);
+    named = type;
   }
 
   return named || 'anonymous';
