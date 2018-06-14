@@ -6,8 +6,8 @@ var toString = Object.prototype.toString;
  * Extract names from functions.
  *
  * @param {Function} fn The function who's name we need to extract.
- * @returns {String}
- * @api public
+ * @returns {String} The name of the function.
+ * @public
  */
 module.exports = function name(fn) {
   if ('string' === typeof fn.displayName && fn.constructor.name) {

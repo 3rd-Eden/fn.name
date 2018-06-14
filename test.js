@@ -42,4 +42,32 @@ describe('fn.name', function () {
   it('returns the className if we were not given a function', function () {
     assume(name('string')).equals('String');
   });
+
+  //
+  // Test if the env supports async functions, if so add a test to ensure
+  // that we will work with async functions.
+  //
+  var asyncfn = true;
+  try { new Function('return async function hello() {}')(); }
+  catch (e) { asyncfn = false; }
+
+  if (asyncfn) it('detects the name of async functions', function () {
+    var fn = new Function('return async function hello() {}')();
+
+    assume(name(fn)).equals('hello');
+  });
+
+  //
+  // Test that this env supports generators, if so add a test to ensure that
+  // we will work with generators.
+  //
+  var generators = true;
+  try { new Function('return function* generator() {}')(); }
+  catch (e) { generator = false; }
+
+  if (generators) it('detecs the name of a generator', function () {
+    var fn = new Function('return function* hello() {}')();
+
+    assume(name(fn)).equals('hello');
+  });
 });
