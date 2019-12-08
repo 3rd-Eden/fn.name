@@ -63,7 +63,7 @@ describe('fn.name', function () {
   //
   var generators = true;
   try { new Function('return function* generator() {}')(); }
-  catch (e) { generator = false; }
+  catch (e) { generators = false; }
 
   if (generators) it('detecs the name of a generator', function () {
     var fn = new Function('return function* hello() {}')();
