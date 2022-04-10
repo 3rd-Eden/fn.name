@@ -20,7 +20,7 @@ describe('fn.name', function () {
     assume(name(a)).equals('bar');
   });
 
-  it('can be overriden using displayName', function () {
+  it('can be overridden using displayName', function () {
     var a = function bar() {};
     a.displayName = 'bro';
 
