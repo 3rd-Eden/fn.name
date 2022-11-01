@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "assume": "2.x.x",
-    "istanbul": "0.3.x",
+    "istanbul": "0.4.x",
     "mocha": "5.x.x",
     "pre-commit": "1.x.x"
   },
